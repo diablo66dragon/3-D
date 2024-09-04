@@ -22,3 +22,52 @@ body {
 h1{
  color: var(--cor-destaque);
 }
+function mostraAlternativas() {
+  for (const alternativa of perguntaAtual.alternativas) {
+    const botaoAlternativas = document.createElement("button");
+    botaoAlternativas.textContent = alternativa.texto;
+    botaoAlternativas.addEventListener("click", function () {
+      atual++;
+      mostraPergunta();
+    });
+    caixaAlternativas.appendChild(botaoAlternativas);
+  }
+}
+elementoOpcoes.addEventListener("click", () => respostaSelecionada(opcao));
+function respostaSelecionada(opcaoSelecionada) {
+ atual++;
+
+ mostraPerguntaAtual();
+}
+function respostaSelecionada(opcaoSelecionada) {
+ const resposta = opcaoSelecionada.afirmacoes;
+ atual++;
+ mostraPerguntaAtual();
+}
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+function respostaSelecionada(opcaoSelecionada){
+    const afirmacoes = opcaoSelecionada.afirmacoes;
+    historiaFinal = afirmacoes;
+    atual++;
+    mostraPergunta();
+}
+function mostraPergunta() {
+  if (atual >= perguntas.length) {
+    mostraResultado();
+    return;
+  }
+  perguntaAtual = perguntas[atual];
+  caixaPerguntas.textContent = perguntaAtual.enunciado;
+  caixaAlternativas.textContent = "";
+  mostraAlternativas();
+}
+button {
+    background-color: var(--cor-principal);
+    color: var(--cor-destaque);
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    transition: background-color 0.3s;
+}
