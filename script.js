@@ -192,3 +192,52 @@ function mostraAlternativas() {
     caixaAlternativas.appendChild(botaoAlternativas);
   }
 }
+elementoOpcoes.addEventListener("click", () => respostaSelecionada(opcao));
+function respostaSelecionada(opcaoSelecionada) {
+ atual++;
+
+ mostraPerguntaAtual();
+}
+function respostaSelecionada(opcaoSelecionada) {
+ const resposta = opcaoSelecionada.afirmacoes;
+ atual++;
+ mostraPerguntaAtual();
+}
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+function respostaSelecionada(opcaoSelecionada){
+    const afirmacoes = opcaoSelecionada.afirmacoes;
+    historiaFinal = afirmacoes;
+    atual++;
+    mostraPergunta();
+}
+function mostraPergunta() {
+  if (atual >= perguntas.length) {
+    mostraResultado();
+    return;
+  }
+  perguntaAtual = perguntas[atual];
+  caixaPerguntas.textContent = perguntaAtual.enunciado;
+  caixaAlternativas.textContent = "";
+  mostraAlternativas();
+}
+button {
+    background-color: var(--cor-principal);
+    color: var(--cor-destaque);
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    transition: background-color 0.3s;
+}
+// código omitido
+enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que… alternativas: [
+    {
+        texto: "Isso é assustador!",
+        afirmacao: "No início ficou com medo do que essa tecnologia pode fazer.
+    {
+        texto: "Isso é maravilhoso!",
+        afirmacao: "Quis saber como usar IA no seu dia a dia."
+    }
+]
+// código omitido
